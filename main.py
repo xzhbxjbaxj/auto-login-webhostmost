@@ -65,7 +65,7 @@ async def send_telegram_message(message: str, telegram_bot_token: str, telegram_
          print(f'发送消息到Telegram时出错: {e}')
 
 async def main() -> None:
-    email = os.getenv('EMAIL')
+    email = os.getenv('USERNAME')
     password = os.getenv('PASSWORD')
     url = 'https://client.webhostmost.com/login'
     message = ''
