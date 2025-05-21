@@ -1,0 +1,15 @@
+{
+  "name": "webhostmost-login-keeper",
+  "version": "1.0.0",
+  "description": "自动登录 WebHostMost 保持账号活跃，支持多账号和微信推送",
+  "main": "login.js",
+  "scripts": {
+    "start": "node login.js",
+    "headful": "node login.js HEADFUL=true"
+  },
+  "author": "px",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.44.0"
+  }
+}
