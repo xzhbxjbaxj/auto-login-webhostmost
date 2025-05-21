@@ -18,14 +18,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 📦 安装 Playwright 依赖
+      - name: 📦 安装 Playwright
         run: npm install playwright
-
-      - name: 📂 安装浏览器运行时
-        run: npx playwright install --with-deps
 
       - name: 🚀 执行登录脚本
         env:
           USERNAMES: ${{ secrets.USERNAMES }}
           PASSWORDS: ${{ secrets.PASSWORDS }}
-        run: node auto-login.js
+        run: node login.js
