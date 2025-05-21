@@ -1,31 +1,31 @@
-name: Monthly WebHostMost Login Keepalive
+name: Monthly Login Keepalive
 
 on:
   schedule:
-    - cron: '0 0 1 * *'  # 每月 1 号 00:00 UTC（你可以根据时区调整）
-  workflow_dispatch:      # 允许手动触发
+    - cron: '0 0 1 * *'  # 每月1号 UTC时间 00:00 执行
+  workflow_dispatch:      # 可手动触发
 
 jobs:
-  keepalive:
+  login:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 拉取代码
+      - name: 📥 Checkout 代码
         uses: actions/checkout@v3
 
-      - name: ⚙️ 安装 Node.js
+      - name: ⚙️ 设置 Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: 📦 安装依赖
-        run: npm install
+      - name: 📦 安装 Playwright 依赖
+        run: npm install playwright
 
-      - name: 📂 安装 Playwright 浏览器
+      - name: 📂 安装浏览器运行时
         run: npx playwright install --with-deps
 
       - name: 🚀 执行登录脚本
         env:
           USERNAMES: ${{ secrets.USERNAMES }}
           PASSWORDS: ${{ secrets.PASSWORDS }}
-        run: npm start
+        run: node auto-login.js
